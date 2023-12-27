@@ -28,5 +28,11 @@ $result = file_get_contents($url, false, $context);
 $redirectUrl = 'https://tproger.ru/'; // <-- Замените это на желаемый URL
 $_SESSION['redirectUrl'] = $redirectUrl;
 
+if (isset($_SESSION['redirectUrl'])) {
+    echo "Session set: " . $_SESSION['redirectUrl'];
+} else {
+    echo "Session not set";
+}
+
 exit(); 
 ?>
