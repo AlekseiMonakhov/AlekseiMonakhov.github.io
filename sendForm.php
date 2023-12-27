@@ -25,7 +25,7 @@ $url = 'https://api.telegram.org/bot' . $token . '/sendMessage?chat_id=' . $chat
 $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
-$redirectUrl = './thankyou.html'; // <-- Замените это на желаемый URL
+$redirectUrl = 'thankyou.html'; // <-- Замените это на желаемый URL
 $_SESSION['redirectUrl'] = $redirectUrl;
 
 exit(); 
