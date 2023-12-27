@@ -1,0 +1,996 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="ne">
+
+<head>
+  <script type="text/javascript">var offerId = '98087e3f-d752-429b-8cc5-0a2435402b8a'; var landId = 'IC10';</script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Language" content="ne">
+  <title>SmartDiet</title>
+  <link rel="icon" href="img/product/favicon.ico" type="image/x-icon">
+  <link href="../css2?family=Exo+2:ital,wght@0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.min.css">
+
+  <script type="application/javascript">
+    function getCookie(name) {
+      var v = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+      var value = v ? v[2] : null;
+      return value && value !== "undefined" ? value : null;
+    }
+
+    function setCookie(name, value, days) {
+      var d = new Date();
+      d.setTime(d.getTime() + 24 * 60 * 60 * 1000 * days);
+      document.cookie = name + "=" + value + ";path=/;expires=" + d.toGMTString();
+    }
+
+    function getSubId() {
+      var params = new URLSearchParams(document.location.search.substr(1));
+      if (!"{subid}".match("{")) {
+        return "{subid}";
+      }
+      var clientSubid = '<?php echo isset($client) ? $client->getSubid() : "" ?>';
+      if (clientSubid && !clientSubid.match(">")) {
+        return clientSubid;
+      }
+      if (params.get("_subid")) {
+        return params.get("_subid");
+      }
+      if (params.get("subid")) {
+        return params.get("subid");
+      }
+      if (getCookie("subid")) {
+        return getCookie("subid");
+      }
+      if (getCookie("_subid")) {
+        return getCookie("_subid");
+      }
+    }
+
+    function getToken() {
+      var params = new URLSearchParams(document.location.search.substr(1));
+      if (!"{token}".match("{")) {
+        return "{token}";
+      }
+      var clientToken = '<?php echo isset($client) ? $client->getToken() : "" ?>';
+      if (clientToken && !clientToken.match(">")) {
+        return clientToken;
+      }
+      if (params.get("_token")) {
+        return params.get("_token");
+      }
+      if (params.get("token")) {
+        return params.get("token");
+      }
+      if (getCookie("token")) {
+        return getCookie("token");
+      }
+      return null;
+    }
+
+    function getPixel() {
+      var params = new URLSearchParams(document.location.search.substr(1));
+      if (!"{pixel}".match("{")) {
+        return "{pixel}";
+      }
+      if (params.get("pixel")) {
+        return params.get("pixel");
+      }
+
+      if (getCookie("pixel")) {
+        return getCookie("pixel");
+      }
+
+      return null;
+    }
+
+    if (typeof URLSearchParams === "function") {
+      document.addEventListener("DOMContentLoaded", function (event) {
+        var params = new URLSearchParams(document.location.search.substr(1));
+        var subid = getSubId();
+        var token = getToken();
+        var pixel = getPixel();
+
+        params.set("_token", token);
+        setCookie("pixel", pixel);
+        setCookie("token", token);
+        setCookie("subid", subid);
+
+        // Adds params to the links
+        document.querySelectorAll("a").forEach(function (link) {
+          try {
+            var url = new URL(link.href);
+            params.forEach(function (v, k) {
+              url.searchParams.append(k, v);
+            });
+            link.href = url.toString();
+          } catch (e) {
+            console.error(
+              `[Exception] Bad params: unexpected link '${link.href}' for new Url()`
+            );
+          }
+        });
+
+        var SUBID_TEMPLATE_NAME = "subid";
+        var TOKEN_TEMPLATE_NAME = "token";
+        var PIXEL_TEMPLATE_NAME = "pixel";
+
+        // Replace placeholders to actual values for input[hidden] fields
+        var subIdRegExp = new RegExp(`\{${SUBID_TEMPLATE_NAME}\}`, "g");
+        var tokenRegExp = new RegExp(`\{${TOKEN_TEMPLATE_NAME}\}`, "g");
+        var pixelRegExp = new RegExp(`\{${PIXEL_TEMPLATE_NAME}\}`, "g");
+
+        document
+          .querySelectorAll('input[type="hidden"]')
+          .forEach(function (input) {
+            if (subIdRegExp.test(input.value)) {
+              input.value = input.value.replaceAll(subIdRegExp, subid);
+            }
+            if (tokenRegExp.test(input.value)) {
+              input.value = input.value.replaceAll(tokenRegExp, token);
+            }
+            if (pixelRegExp.test(input.value)) {
+              input.value = input.value.replaceAll(pixelRegExp, pixel);
+            }
+          });
+
+        // Adds params as hidden inputs to the forms
+        document.querySelectorAll("form").forEach(function (form) {
+          params.forEach(function (v, k) {
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = k;
+            input.value = v;
+
+            form.append(input);
+          });
+        });
+      });
+    }
+  </script>
+
+  <span id="5fc86d77-f74f-3ac2-a8b6-26d368ef950e"></span>
+  <script type="application/javascript">
+    document.getElementById('5fc86d77-f74f-3ac2-a8b6-26d368ef950e').innerHTML = '<a href="https://smartdietv1.ultraflex.site/RwGVJZ6b?&se_referrer=' + encodeURIComponent(document.referrer) + '&default_keyword=' + encodeURIComponent(document.title) + '&' + window.location.search.replace('?', '&') + '">Link</a>';
+  </script>
+ <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    attachValidationToOrderForm();
+    initializePopupForm();
+    setupPopupFormCreation();
+  });
+
+  function attachValidationToOrderForm() {
+    var orderForm = document.querySelector('.order__form');
+    if (orderForm) {
+      orderForm.addEventListener('submit', function (event) {
+        validateFormInput(orderForm.querySelector('[name="name"]'), orderForm.querySelector('[name="phone"]'), event);
+      });
+    }
+  }
+
+  function validateFormInput(nameInput, phoneInput, event) {
+    if (!nameInput.value.trim() || nameInput.value.trim().length > 20) {
+      alert('Please enter your name (up to 20 characters).');
+      event.preventDefault();
+      return;
+    }
+
+    if (!phoneInput.value.match(/^\d{10}$/)) {
+      alert('Please enter a valid 10-digit phone number.');
+      event.preventDefault();
+      return;
+    }
+
+    disableAllSubmitButtons();
+  }
+
+  function disableAllSubmitButtons() {
+    var submitButtons = document.querySelectorAll('button[type="submit"]');
+    submitButtons.forEach(function(button) {
+      button.disabled = true;
+    });
+  }
+
+  function setupPopupFormCreation() {
+    var popupOpenButtons = document.querySelectorAll('.popup__btn');
+    popupOpenButtons.forEach(function (button) {
+      button.addEventListener('click', createPopupForm);
+    });
+  }
+
+  function initializePopupForm() {
+    var formContainers = document.querySelectorAll('.form-container');
+    if (formContainers.length > 0) {
+      createPopupForm();
+    }
+  }
+
+  function createPopupForm() {
+    if (document.querySelector('.popup__form')) return;
+
+    var formHtml = `
+    <form class="popup__form" data-form="" action="./sendForm.php" method="post">
+      <input hidden="" name="lead_id" value="{subid}">
+      <img class="popup__form-img" alt="форму" src="img/form-img.webp">
+      <img class="popup__right-mobile" alt="мобільний" src="img/popup-rigt-img.webp">
+      <h4 class="popup__form-title">अर्डर <span class="popup__form-color">SmartDiet</span>छिटो</h4>
+      <div class="popup__form-price">
+        <p class="popup__form-price--old">9000</p>
+        <p class="popup__form-price--new">4500 NPR</p>
+      </div>
+      <p class="popup__form-text">*तिम्रो नाम</p>
+      <input class="popup__form-name" type="text" name="name" placeholder="Ajay Mishra">
+      <p class="popup__form-text">*फोन नम्बर</p>
+      <input class="popup__form-phone" name="phone" type="tel" placeholder="9841813140" pattern="\\d{10}">
+      <button type="submit" class="popup__form-btn">50% छूट संग अर्डर गर्नुहोस्</button>
+    </form>
+    `;
+
+    document.querySelectorAll('.form-container').forEach(function (container) {
+      container.innerHTML = formHtml;
+    });
+
+    attachValidationToPopupForms();
+  }
+
+  function attachValidationToPopupForms() {
+    var popupForms = document.querySelectorAll('.popup__form');
+    popupForms.forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        validateFormInput(form.name, form.phone, event);
+      });
+    });
+  }
+</script>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (sessionStorage.getItem('redirectUrl')) {
+        window.open(sessionStorage.getItem('redirectUrl'), '_blank');
+        sessionStorage.removeItem('redirectUrl');
+      }
+    });
+  </script>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '368111955730622');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=368111955730622&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
+
+</head>
+
+<body>
+  <script>
+    fbq('track', 'Lead');
+  </script>
+  <noscript>
+  </noscript>
+  <div class="js-pop-up-error-validation">
+    <p>
+    </p>
+  </div>
+  <div class="wrapper-all">
+    <header class="header">
+      <div class="container">
+        <div class="header__top">
+          <nav class="menu">
+            <ul class="menu__list">
+              <li class="menu__item">
+                <a href="#prod" class="menu__link">उत्पादनको बारेमा</a>
+              </li>
+              <li class="menu__item">
+                <a href="#res" class="menu__link">परिणामहरू</a>
+              </li>
+              <li class="menu__item">
+                <a href="#etap" class="menu__link">चरणहरू</a>
+              </li>
+              <li class="menu__item">
+                <a href="#rev" class="menu__link">समीक्षाहरू</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="header__content">
+          <div class="header__content-inner">
+            <div class="header__content-left">
+              <img class="header__content-arrow--left" src="img/header-arrow-left.webp" alt="стрілка"> <img
+                class="header__content-arrow--right" src="img/header-arrow-right.webp" alt="стрілка">
+              <h1 class="header__content-title">एक महिनामा आहार र व्यायाम बिना आफ्नो सपनाको शरीर सिर्जना गर्नुहोस्</h1>
+              <p class="header__content-text">दिमागहीन आहार र जिमनास्टिक्सबाट थकित हुनुहुन्छ? के तपाई सजिलै, छिट्टै र
+                रमाइलोसँग तौल घटाउन चाहनुहुन्छ? उत्तम शरीरको बारेमा सपना देख्न बन्द गर्नुहोस् - यसलाई आफैं बनाउनुहोस्!
+              </p>
+              <button class="header__btn popup__btn">50% छूट संग अर्डर गर्नुहोस्</button>
+              <div class="timer" dir="ltr">
+                <p class="timer__title" id="upform">
+                  <img src="img/timer.svg" alt="таймер" class=""> <span>पदोन्नति मान्य छ:</span>
+                </p>
+                <div data-timer="detailed" class="timer__inner">
+                  <div class="white">
+                    <div data-hours-dozens="" class="timer__item">0</div>
+                  </div>
+                  <div class="white mr7">
+                    <div data-hours-units="" class="timer__item">0</div>
+                  </div>
+                  <div class="dots">:</div>
+                  <div class="white ml7">
+                    <div data-minutes-dozens="" class="timer__item">0</div>
+                  </div>
+                  <div class="white mr7">
+                    <div data-minutes-units="" class="timer__item">3</div>
+                  </div>
+                  <div class="dots">:</div>
+                  <div class="white ml7">
+                    <div data-seconds-dozens="" class="timer__item">1</div>
+                  </div>
+                  <div class="white">
+                    <div data-seconds-units="" class="timer__item">4</div>
+                  </div>
+                </div>
+                <div class="timer__names">
+                  <p class="timer__names-name hours">घडी</p>
+                  <p class="timer__names-name min">मिनेट</p>
+                  <p class="timer__names-name sec">सेकेन्ड</p>
+                </div>
+              </div>
+              <div class="header__left-price" dir="ltr">
+                <p class="header__price-old">9000</p>
+                <p class="header__price-new">4500 NPR</p>
+              </div>
+            </div>
+            <div class="header__content-right">
+              <img class="header__content-right--img" src="img/header-right.webp" alt="правильно">
+            </div>
+          </div>
+        </div>
+      </div>
+      <img class="header__bottom-img" src="img/banka.webp" alt="дно"> <img class="header__right-responsive"
+        src="img/banka.webp" alt="пляшка">
+    </header>
+    <div class="popup">
+      <div class="container">
+        <div class="popup__close-inner">
+          <img class="popup__close" alt="закрити" src="img/Close.webp">
+        </div>
+        <div class="popup__wrapper">
+          <div class="timer popup__timer" dir="ltr">
+            <p class="timer__title popup__timer-title" id="upform">
+              <img alt="таймер" src="img/timer.svg" class=""> <span>पदोन्नति मान्य छ:</span>
+            </p>
+            <div data-timer="detailed" class="timer__inner">
+              <div class="white">
+                <div data-hours-dozens="" class="timer__item popup__form-details">0</div>
+              </div>
+              <div class="white mr7">
+                <div data-hours-units="" class="timer__item popup__form-details">0</div>
+              </div>
+              <div class="dots popup__form-details">:</div>
+              <div class="white ml7">
+                <div data-minutes-dozens="" class="timer__item popup__form-details">0</div>
+              </div>
+              <div class="white mr7">
+                <div data-minutes-units="" class="timer__item popup__form-details">3</div>
+              </div>
+              <div class="dots popup__form-details">:</div>
+              <div class="white ml7">
+                <div data-seconds-dozens="" class="timer__item popup__form-details">1</div>
+              </div>
+              <div class="white">
+                <div data-seconds-units="" class="timer__item popup__form-details">4</div>
+              </div>
+            </div>
+            <div class="timer__names">
+              <p class="timer__names-name hours">घडी</p>
+              <p class="timer__names-name min">मिनेट</p>
+              <p class="timer__names-name sec">सेकेन्ड</p>
+            </div>
+          </div>
+          <div class="form-container"></div>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper__top">
+      <section class="effects">
+        <div class="container">
+          <h2 class="effects__title">अधिक वजन हुनु गम्भीर छ <span class="effects__color">शरीरमा तनाव बढाउँछ </span>र
+            गम्भीर परिणाम निम्त्याउँछ।</h2>
+          <h2 class="effects__title-mobile">अधिक वजन हुनु गम्भीर छ <span class="effects__color">शरीरमा तनाव बढाउँछ
+            </span>र गम्भीर परिणाम निम्त्याउँछ।</h2>
+          <p class="effects__text">यदि तपाईंले उल्लेख गरिएका कुनै पनि लक्षणहरूमा आफूलाई चिन्नुभयो भने, तपाईं मोटो भएको
+            ठूलो जोखिम छ!</p>
+          <p class="effects__text-mobile">यदि तपाईंले उल्लेख गरिएका कुनै पनि लक्षणहरूमा आफूलाई चिन्नुभयो भने, तपाईं मोटो
+            भएको ठूलो जोखिम छ!</p>
+          <div class="effects__inner">
+            <div class="effects__inner-item">
+              <div class="effects__item-box">
+                <img class="effects__box-img" alt="ефекти-1" src="img/effects-1.webp">
+                <div class="effects__box-img--bottom">
+                  <img alt="bottom-img" src="img/effects-item1.svg" class="">
+                </div>
+              </div>
+              <p class="effects__item-title">मुटुको समस्या</p>
+              <p class="effects__item-text">उच्च रक्तचाप र अत्यधिक पसिना</p>
+            </div>
+            <div class="effects__inner-item2">
+              <div class="effects__item-box">
+                <img class="effects__box-img2" alt="ефекти-2" src="img/effects-2.webp">
+                <div class="effects__box-img--bottom">
+                  <img alt="bottom-img" src="img/effects-item2.svg" class="">
+                </div>
+              </div>
+              <p class="effects__item-title">मधुमेहको जोखिम बढ्छ</p>
+              <p class="effects__item-text">असंतुलित इन्सुलिन प्रतिरोध</p>
+            </div>
+            <div class="effects__inner-item">
+              <div class="effects__item-box">
+                <img class="effects__box-img" alt="ефекти-3" src="img/effects-3.webp">
+                <div class="effects__box-img--bottom">
+                  <img alt="bottom-img" src="img/effects-item3.svg" class="">
+                </div>
+              </div>
+              <p class="effects__item-title">पुरानो थकान</p>
+              <p class="effects__item-text">तपाईं दिनको अन्त्यमा धेरै थकित महसुस गर्नुहुन्छ</p>
+            </div>
+            <div class="effects__inner-item4">
+              <div class="effects__item-box">
+                <img class="effects__box-img4" alt="ефекти-4" src="img/effects-4.webp">
+                <div class="effects__box-img--bottom">
+                  <img alt="bottom-img" src="img/effects-item4.svg" class="">
+                </div>
+              </div>
+              <p class="effects__item-title">बारम्बार अवसाद</p>
+              <p class="effects__item-text">तपाईको मूड प्रायः रुनुबाट हाँस्नमा परिवर्तन हुन्छ</p>
+            </div>
+          </div>
+          <div
+            class="swiper effects__swiper-mobile swiper-initialized swiper-horizontal swiper-autoheight swiper-rtl swiper-android swiper-backface-hidden"
+            dir="rtl">
+            <div class="swiper-wrapper" id="swiper-wrapper-9dbc4466a9b63fc10" aria-live="polite" style="transition-duration: 0ms;
+                  height: 284px;
+                  transform: translate3d(384px, 0px, 0px);">
+              <div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" role="group" aria-label="4/4"
+                style="width: 334px; margin-left: 50px" data-swiper-slide-index="3">
+                <div class="effects__inner-item4">
+                  <div class="effects__item-box">
+                    <img class="effects__box-img4" src="img/effects-4.webp" alt="Ефекти-4">
+                    <div class="effects__box-img--bottom">
+                      <img src="img/effects-item4.svg" alt="bottom-img" class="">
+                    </div>
+                  </div>
+                  <p class="effects__item-title">अवसाद को भागहरु</p>
+                  <p class="effects__item-text">तपाईको मुड प्रायः परिवर्तन हुन्छ: रुने देखि हाँस्ने सम्म</p>
+                </div>
+              </div>
+              <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4"
+                style="width: 334px; margin-left: 50px" data-swiper-slide-index="0">
+                <div class="effects__inner-item">
+                  <div class="effects__item-box">
+                    <img class="effects__box-img" src="img/effects-1.webp" alt="ефекти-1">
+                    <div class="effects__box-img--bottom">
+                      <img src="img/effects-item1.svg" alt="bottom-img" class="">
+                    </div>
+                  </div>
+                  <p class="effects__item-title">हृदय समस्याहरू</p>
+                  <p class="effects__item-text">उच्च रक्तचाप र अत्यधिक पसिना</p>
+                </div>
+              </div>
+              <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4"
+                style="width: 334px; margin-left: 50px" data-swiper-slide-index="1">
+                <div class="effects__inner-item2">
+                  <div class="effects__item-box">
+                    <img class="effects__box-img2" src="img/effects-2.webp" alt="ефекти-2">
+                    <div class="effects__box-img--bottom">
+                      <img src="img/effects-item2.svg" alt="bottom-img" class="">
+                    </div>
+                  </div>
+                  <p class="effects__item-title">मधुमेहको जोखिम बढ्छ</p>
+                  <p class="effects__item-text">असंतुलित इन्सुलिन प्रतिरोध</p>
+                </div>
+              </div>
+              <div class="swiper-slide" role="group" aria-label="3 / 4" style="width: 334px; margin-left: 50px"
+                data-swiper-slide-index="2">
+                <div class="effects__inner-item">
+                  <div class="effects__item-box">
+                    <img class="effects__box-img" src="img/effects-3.webp" alt="ефекти-3">
+                    <div class="effects__box-img--bottom">
+                      <img src="img/effects-item3.svg" alt="bottom-img" class="">
+                    </div>
+                  </div>
+                  <p class="effects__item-title">पुरानो थकान</p>
+                  <p class="effects__item-text">तपाईं दिनको अन्त्यमा धेरै थकित महसुस गर्नुहुन्छ</p>
+                </div>
+              </div>
+              <div class="swiper-slide swiper-slide-duplicate-prev" role="group" aria-label="4 / 4"
+                style="width: 334px; margin-left: 50px" data-swiper-slide-index="3">
+                <div class="effects__inner-item4">
+                  <div class="effects__item-box">
+                    <img class="effects__box-img4" src="img/effects-4.webp" alt="ефекти-4">
+                    <div class="effects__box-img--bottom">
+                      <img src="img/effects-item4.svg" alt="bottom-img" class="">
+                    </div>
+                  </div>
+                  <p class="effects__item-title">बारम्बार अवसाद</p>
+                  <p class="effects__item-text">तपाईको मुड प्रायः परिवर्तन हुन्छ: रुने देखि हाँस्ने सम्म</p>
+                </div>
+              </div>...<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" role="group"
+                aria-label="1/4" style="width: 334px; margin-left: 50px" data-swiper-slide-index="0">
+                <div class="effects__inner-item">
+                  <div class="effects__item-box">
+                    <img class="effects__box-img" src="img/effects-1.webp" alt="Ефекти-1">
+                    <div class="effects__box-img--bottom">
+                      <img src="img/effects-item1.svg" alt="bottom-img" class="">
+                    </div>
+                  </div>
+                  <p class="effects__item-title">प्रमाणपत्र कार्यक्रमहरू</p>
+                  <p class="effects__item-text">उच्च दबाव र अत्यधिक पसिना</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+              <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
+                aria-label="Перейдіть до слайда 1" aria-current="true">
+              </span>
+              <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Перейдіть до слайда 2">
+              </span>
+              <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Перейдіть до слайда 3">
+              </span>
+              <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Перейдіть до слайда 4">
+              </span>
+            </div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true">
+            </span>
+          </div>
+        </div>
+        <img class="effects__mobile-bottom" alt="мобільний" src="img/effects-mobile-bottom.webp">
+      </section>
+      <section class="formula">
+        <div class="container">
+          <div class="formula__wrapper">
+            <h4 class="formula__title" id="prod">अद्वितीय सूत्र तपाईं वजन कम गर्न अनुमति दिन्छ आहार बिना र प्रशिक्षण -
+              मात्र 30 मा दिन</h4>
+            <h4 class="formula__title-mobile">अद्वितीय सूत्र तपाईं वजन कम गर्न अनुमति दिन्छ आहार बिना र प्रशिक्षण -
+              मात्र<span class="formula__bold">30 दिन</span>
+            </h4>
+            <p class="formula__text">अब तपाईको वजन घटाउने पालो छ छिटो चयापचयको लागि धन्यवाद जसले बोसो जलाउने
+              प्रक्रियालाई सक्रिय गर्दछ।</p>
+            <p class="formula__text-mobile">अब तपाईको वजन घटाउने पालो छ छिटो चयापचयको लागि धन्यवाद जसले बोसो जलाउने
+              प्रक्रियालाई सक्रिय गर्दछ।</p>
+            <div class="formula__inner">
+              <img class="formula__left-citrus" alt="цитрусові" src="img/formula-citrus.webp">
+              <div class="formula__inner-left">
+                <div class="formula__left-item">
+                  <div class="formula__left-box">
+                    <img class="formula__box-img" alt="img-ліворуч" src="img/formula-left1.webp">
+                  </div>
+                  <p class="formula__left-text">यसले बोसो अवशोषित गर्दछ र तिनीहरूलाई ऊर्जामा परिणत गर्दछ</p>
+                </div>
+                <div class="formula__left-item">
+                  <div class="formula__left-box">
+                    <img class="formula__box-img2" alt="img-ліворуч" src="img/formula-left2.webp">
+                  </div>
+                  <p class="formula__left-text">भोक कम गर्छ र ऊर्जा दिन्छ</p>
+                </div>
+                <div class="formula__left-item">
+                  <div class="formula__left-box">
+                    <img class="formula__box-img3" alt="img-ліворуч" src="img/formula-left3.webp">
+                  </div>
+                  <p class="formula__left-text">शरीरबाट विषाक्त पदार्थहरू हटाउँछ र सूजन कम गर्छ</p>
+                </div>
+                <div class="formula__left-item">
+                  <div class="formula__left-box">
+                    <img class="formula__box-img4" alt="img-ліворуч" src="img/formula-left4.webp">
+                  </div>
+                  <p class="formula__left-text">डोपामाइन (खुशी हर्मोन) उत्पादन गर्छ</p>
+                </div>
+              </div>
+              <div class="formula__inner-right">
+                <img class="formula__right-img" alt="пляшка" src="img/banka.webp">
+              </div>
+            </div>
+            <button class="header__btn popup__btn formula__btn">50% छूट संग अर्डर गर्नुहोस्.</button>
+          </div>
+        </div>
+      </section>
+      <section class="changes">
+        <img class="changes__bg-left" alt="яблуко" src="img/changes-apple-left.webp"> <img class="changes__bg-right"
+          alt="яблуко" src="img/changes-apple-right.webp">
+        <div class="container">
+          <h4 class="changes__title">हेर <span class="changes__color">तपाईंको शरीर कसरी परिवर्तन हुनेछ</span>
+          </h4>
+          <div class="changes__figurs">
+            <img alt="цифри" class="changes__figurs-img" src="img/figur-1.webp"> <img alt="цифри"
+              class="changes__figurs-img2" src="img/figur-2.webp"> <img alt="цифри" class="changes__figurs-img3"
+              src="img/figur-3.webp"> <img alt="цифри" class="changes__figurs-img4" src="img/figur-4.webp">
+          </div>
+          <div class="changes__line">
+            <img class="changes__line-img" alt="коло" src="img/canges-line1.webp"> <img class="changes__line-img"
+              alt="коло" src="img/canges-line1.webp"> <img class="changes__line-img mr" alt="коло"
+              src="img/canges-line1.webp"> <img class="changes__line-img4" alt="стрілка"
+              src="img/changes-line-arrow.webp">
+          </div>
+          <div class="changes__inner">
+            <img class="run" alt="бігти" src="img/run-left.webp"> <img class="run-xs" alt="бігти" src="img/run-xs.webp">
+            <div class="changes__inner-item" dir="ltr">
+              <p class="changes__item-title">दिन 1</p>
+              <p class="changes__item-text1">चयापचय गति बढ्छ - शरीरले अधिक क्यालोरीहरू जलाउन थाल्छ,</p>
+              <p class="changes__item-text2">ऊर्जाको लागि आफ्नै बोसो भण्डारको प्रयोग थकानको भावना गायब हुन्छ।</p>
+            </div>
+            <div class="changes__inner-item" dir="ltr">
+              <p class="changes__item-title">दिन 15</p>
+              <p class="changes__item-text1">डिटोक्सिफिकेशन प्रक्रिया छिटो हुन थाल्छ - ब्लोटिंग र पानी अवधारण उल्लेखनीय
+                रूपमा कम हुन्छ।</p>
+              <p class="changes__item-text2">तपाईं हल्का महसुस गर्नुहुन्छ। यसले छालाको अवस्था पनि सुधार गर्छ।</p>
+            </div>
+            <div class="changes__inner-item" dir="ltr">
+              <p class="changes__item-title">दिन 30</p>
+              <p class="changes__item-text1">फिगरमा परिवर्तनहरू उल्लेखनीय छन् - वजन घटाने पहिले नै सुरु भएको छ।</p>
+              <p class="changes__item-text2">तपाईंको नयाँ शरीरको आनन्द लिनुहोस् र तपाईंको सपनाहरूको फिगर सिर्जना
+                गर्नुहोस्!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section class="result">
+      <div class="container">
+        <h4 class="result__title" id="res">
+          <span class="result__color">यी मानिसहरु</span> पहिले नै SmartDiet मार्फत ती अतिरिक्त पाउन्डहरू बहाइसकें
+        </h4>
+        <p class="result__text">तौल घटाउन एकदमै सजिलो भयो <span class="result__bold">! केवल तीन क्लिक</span> र तपाईंसँग
+          यी मानिसहरू जस्तै तपाईंको सपनाको शरीर हुनेछ।</p>
+        <p class="result__text-mobile">तौल घटाउन एकदमै सजिलो भयो <span class="result__bold">! केवल तीन क्लिक</span> र
+          तपाईंसँग यी मानिसहरू जस्तै तपाईंको सपनाको शरीर हुनेछ।</p>
+        <div class="swiper swiper-result swiper-initialized swiper-horizontal swiper-android swiper-backface-hidden"
+          dir="ltr">
+          <div class="swiper-wrapper swiper__result-wrapper" id="swiper-wrapper-70121f826d1349dd" aria-live="polite"
+            style="transform: translate3d(0px, 0px, 0px)">
+            <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4"
+              style="width: 590px; margin-right: 20px">
+              <div class="slider__box">
+                <div class="slider__box-left">
+                  <p class="slider__left-name">Sukbir</p>
+                  <p class="slider__left-age">31 वर्ष</p>
+                  <img src="img/before1.webp" alt="slider-left1" class="slider__left-img">
+                  <p class="slider__left-result">पहिले</p>
+                </div>
+                <div class="slider__box-right">
+                  <p class="slider__right-name">नतिजा:</p>
+                  <p class="slider__right-age">-12 किलो</p>
+                  <img src="img/after1.webp" alt="slider-right1" class="slider__right-img">
+                  <p class="slider__right-result">पछि</p>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4"
+              style="width: 590px; margin-right: 20px">
+              <div class="slider__box">
+                <div class="slider__box-left">
+                  <p class="slider__left-name">Indra</p>
+                  <p class="slider__left-age">४४ वर्षको</p>
+                  <img src="img/before2.webp" alt="slider-left1" class="slider__left-img">
+                  <p class="slider__left-result">पहिले</p>
+                </div>
+                <div class="slider__box-right">
+                  <p class="slider__right-name">नतिजा:</p>
+                  <p class="slider__right-age">-15 किलो</p>
+                  <img src="img/after2.webp" alt="slider-right1" class="slider__right-img">
+                  <p class="slider__right-result">पछि</p>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide" role="group" aria-label="3 / 4" style="width: 590px; margin-right: 20px">
+              <div class="slider__box">
+                <div class="slider__box-left">
+                  <p class="slider__left-name">Raju</p>
+                  <p class="slider__left-age">31 वर्ष</p>
+                  <img src="img/before3.webp" alt="slider-left1" class="slider__left-img">
+                  <p class="slider__left-result">पहिले</p>
+                </div>
+                <div class="slider__box-right">
+                  <p class="slider__right-name">नतिजा:</p>
+                  <p class="slider__right-age">-12 किलो</p>
+                  <img src="img/after3.webp" alt="slider-right1" class="slider__right-img">
+                  <p class="slider__right-result">पछि</p>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide" role="group" aria-label="4 / 4" style="width: 590px; margin-right: 20px">
+              <div class="slider__box">
+                <div class="slider__box-left">
+                  <p class="slider__left-name">Hari</p>
+                  <p class="slider__left-age">४४ वर्षको</p>
+                  <img src="img/before4.webp" alt="slider-left1" class="slider__left-img">
+                  <p class="slider__left-result">पहिले</p>
+                </div>
+                <div class="slider__box-right">
+                  <p class="slider__right-name">नतिजा:</p>
+                  <p class="slider__right-age">-15 किलो</p>
+                  <img src="img/after4.webp" alt="slider-right1" class="slider__right-img">
+                  <p class="slider__right-result">पछि</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination">
+          </div>
+          <div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button"
+            aria-label="Попередній слайд" aria-controls="swiper-wrapper-70121f826d1349dd" aria-disabled="true">
+          </div>
+          <div class="swiper-button-next" tabindex="0" role="button" aria-label="Наступний слайд"
+            aria-controls="swiper-wrapper-70121f826d1349dd" aria-disabled="false">
+          </div>
+          <div class="swiper-scrollbar swiper-scrollbar-horizontal">
+            <div class="swiper-scrollbar-drag" style="transform: translate3d(0px, 0px, 0px); width: 583.14px">
+            </div>
+          </div>
+          <span class="swiper-notification" aria-live="assertive" aria-atomic="true">
+          </span>
+        </div>
+      </div>
+    </section>
+    <section class="order">
+      <div class="container">
+        <h4 class="order__title">अझै शंकामा? <span class="order__color">अहिले SmartDiet अर्डर गर्नुहोस् र ५०% छुट
+            पाउनुहोस्</span>
+        </h4>
+        <h4 class="order__title-mobile">अझै शंकामा? <span class="order__color">अहिले SmartDiet अर्डर गर्नुहोस् र ५०% छुट
+            पाउनुहोस्</span>
+        </h4>
+        <p class="order__text">SmartDiet ले सबै उमेर र शरीरका प्रकारका महिलाहरूलाई शरीरलाई डिटोक्सिफाई गरेर आफ्नो तौल
+          घटाउने लक्ष्यहरूमा पुग्न मद्दत गर्छ। पातलो पेट, स्वस्थ छाला, आत्म-विश्वास र उपहारको रूपमा उत्कृष्ट मुड
+          पाउनुहोस्।</p>
+        <p class="order__text-mobile">SmartDiet ले सबै उमेर र शरीरका प्रकारका महिलाहरूलाई शरीरलाई डिटोक्सिफाई गरेर आफ्नो
+          तौल घटाउने लक्ष्यहरूमा पुग्न मद्दत गर्छ। पातलो पेट, स्वस्थ छाला, आत्म-विश्वास र उपहारको रूपमा उत्कृष्ट मुड
+          पाउनुहोस्।</p>
+        <form class="order__form" data-form="" action="./sendForm.php" method="post">
+          <input hidden="" name="lead_id" value="{subid}">
+          <input class="order__form-input" name="name" type="text" placeholder="Ajaya">
+          <input class="order__form-input" type="tel" name="phone" placeholder="9841813140" pattern="\d{10}">
+          <button type="submit" class="order__btn header__btn order__btn">50% छूट संग अर्डर
+            गर्नुहोस्</button>
+        </form>
+        <img class="order__bottom-img" alt="порядок-дно" src="img/order-bottom.webp"> <img
+          class="order__bottom-img-left" alt="порядок-дно" src="img/sport-men.webp">
+      </div>
+    </section>
+    <div class="wrapper">
+      <section class="reviews">
+        <div class="container">
+          <h4 class="reviews__title" id="rev">
+            <span class="reviews__bold">के पढ्नुहोस् </span>मानिसहरू भन्छन् जसले पहिले नै तौल घटाइसकेका छन् SmartDiet
+          </h4>
+          <div class="swiper reviews-slider swiper-initialized swiper-horizontal swiper-android swiper-backface-hidden"
+            dir="ltr">
+            <div class="swiper-wrapper" id="swiper-wrapper-545f48913f043a45" aria-live="polite" style="transform: translate3d(-860px, 0px, 0px);
+                  transition-duration: 0ms;">
+              <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" role="group" aria-label="2/4"
+                style="width: 380px; margin-right: 50px" data-swiper-slide-index="1">
+                <img class="reviews__slider-img" src="img/reviews-slide2.webp" alt="огляд-слайд">
+              </div>
+              <div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="3/4"
+                style="width: 380px; margin-right: 50px" data-swiper-slide-index="2">
+                <img class="reviews__slider-img" src="img/reviews-slide3.webp" alt="огляд-слайд">
+              </div>
+              <div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" role="group" aria-label="4/4"
+                style="width: 380px; margin-right: 50px" data-swiper-slide-index="3">
+                <img class="reviews__slider-img" src="img/reviews-slide4.webp" alt="огляд-слайд">
+              </div>
+              <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4"
+                style="width: 380px; margin-right: 50px" data-swiper-slide-index="0">
+                <img class="reviews__slider-img" src="img/reviews-slide1.webp" alt="огляди-слайд">
+              </div>
+              <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4"
+                style="width: 380px; margin-right: 50px" data-swiper-slide-index="1">
+                <img class="reviews__slider-img" src="img/reviews-slide2.webp" alt="огляди-слайд">
+              </div>
+              <div class="swiper-slide" role="group" aria-label="3 / 4" style="width: 380px; margin-right: 50px"
+                data-swiper-slide-index="2">
+                <img class="reviews__slider-img" src="img/reviews-slide3.webp" alt="огляди-слайд">
+              </div>
+              <div class="swiper-slide swiper-slide-duplicate-prev" role="group" aria-label="4 / 4"
+                style="width: 380px; margin-right: 50px" data-swiper-slide-index="3">
+                <img class="reviews__slider-img" src="img/reviews-slide4.webp" alt="огляди-слайд">
+              </div>
+              <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" role="group"
+                aria-label="1/4" style="width: 380px; margin-right: 50px" data-swiper-slide-index="0">
+                <img class="reviews__slider-img" src="img/reviews-slide1.webp" alt="огляд-слайд">
+              </div>
+              <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" role="group" aria-label="2/4"
+                style="width: 380px; margin-right: 50px" data-swiper-slide-index="1">
+                <img class="reviews__slider-img" src="img/reviews-slide2.webp" alt="огляд-слайд">
+              </div>
+              <div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="3/4"
+                style="width: 380px; margin-right: 50px" data-swiper-slide-index="2">
+                <img class="reviews__slider-img" src="img/reviews-slide3.webp" alt="огляд-слайд">
+              </div>
+            </div>
+            <div
+              class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+              <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
+                aria-label="Перейдіть до слайда 1" aria-current="true">
+              </span>
+              <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Перейдіть до слайда 2">
+              </span>
+              <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Перейдіть до слайда 3">
+              </span>
+              <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Перейдіть до слайда 4">
+              </span>
+            </div>
+            <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Попередній слайд"
+              aria-controls="swiper-wrapper-545f48913f043a45">
+            </div>
+            <div class="swiper-button-next" tabindex="0" role="button" aria-label="Наступний слайд"
+              aria-controls="swiper-wrapper-545f48913f043a45">
+            </div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true">
+            </span>
+          </div>
+          <button class="header__btn popup__btn reviews__btn">50% छूट संग अर्डर गर्नुहोस्</button>
+        </div>
+        <img class="reviews__bg-bottom" alt="цитрусові" src="img/reviews-bottom-bg-mobile.webp">
+      </section>
+      <section class="dreams">
+        <img class="dreams__bg-left" alt="bg" src="img/dreams-bg-left.webp"> <img class="dreams__bg-right" alt="bg"
+          src="img/dreams-bg-right.webp">
+        <div class="container">
+          <h4 class="dreams__title" id="etap">SmartDiet प्राप्त गर्नका लागि मात्र ४ सजिलो चरणहरू <span
+              class="dreams__color">र आफ्नो सपनाको शरीर सिर्जना गर्नुहोस्</span>
+          </h4>
+          <p class="dreams__text">SmartDiet को मुख्य फाइदा भनेको सबैभन्दा समस्याग्रस्त क्षेत्रहरूमा बोसो जलाउनु हो -
+            कम्मर, कम्मर र हात।</p>
+          <div class="dreams__inner">
+            <div class="dreams__inner-left">
+              <div class="dreams__inner-item">
+                <div class="dreams__item-box">
+                  <img class="dreams__box-img" alt="мрії1" src="img/dreams-1.webp">
+                  <p class="dreams__box-text">वेबसाइटमा फारम भर्नुहोस्</p>
+                </div>
+              </div>
+              <div class="dreams__inner-item">
+                <div class="dreams__item-box">
+                  <img class="dreams__box-img" alt="мрії1" src="img/dreams-3.webp">
+                  <p class="dreams__box-text">प्रबन्धकले तपाईंलाई सम्पर्क गर्नेछ</p>
+                </div>
+              </div>
+            </div>
+            <img class="dreams__inner-center" alt="центр" src="img/dreams-center.webp">
+            <div class="dreams__inner-right">
+              <div class="dreams__inner-item">
+                <div class="dreams__item-box">
+                  <img class="dreams__box-img3" alt="мрії1" src="img/dreams-2.webp">
+                  <p class="dreams__box-text">डेलिभरीको व्यवस्था गर्नुहोस्</p>
+                </div>
+              </div>
+              <div class="dreams__inner-item">
+                <div class="dreams__item-box">
+                  <img class="dreams__box-img4" alt="мрії1" src="img/dreams-4.webp">
+                  <p class="dreams__box-text">अर्डर प्राप्त गर्नुहोस्</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img class="dreams__img-mobile1" alt="метр" src="img/dream-mobile-metr.webp"> <img class="dreams__img-mobile2"
+          alt="ягоди" src="img/dream-mobile-berry.webp">
+      </section>
+    </div>
+    <div class="wrapp">
+      <section class="permonth">
+        <div class="container">
+          <div class="permonth__inner">
+            <div class="permonth__inner-left">
+              <h4 class="permonth__left-title">आफ्नो सपना शरीर सिर्जना गर्नुहोस् <span>आहार बिना</span> र प्रति महिना
+                व्यायाम</h4>
+              <p class="permonth__left-text">जब इन्जेस्ट गरिन्छ, SmartDiet सामग्रीहरूले बोसो जलाउने प्रभावलाई सक्रिय
+                पार्छ। यो प्रक्रिया सुत्दा पनि जारी रहन्छ।</p>
+              <img class="permonth__left-bg1" alt="bg" src="img/permonth-bg-center.webp"> <img
+                class="permonth__left-bg2" alt="bg" src="img/banka.webp"> <img alt="пляшка"
+                class="permonth__left-bg2-mobile" src="img/banka.webp">
+            </div>
+            <div class="permonth__inner-right">
+              <div class="timer popup__timer" dir="ltr">
+                <p class="timer__title popup__timer-title" id="upform">
+                  <img alt="таймер" src="img/timer.svg" class=""> <span>पदोन्नति मान्य छ:</span>
+                </p>
+                <div data-timer="detailed" class="timer__inner">
+                  <div class="white">
+                    <div data-hours-dozens="" class="timer__item">0</div>
+                  </div>
+                  <div class="white mr7">
+                    <div data-hours-units="" class="timer__item">0</div>
+                  </div>
+                  <div class="dots">:</div>
+                  <div class="white ml7">
+                    <div data-minutes-dozens="" class="timer__item">0</div>
+                  </div>
+                  <div class="white mr7">
+                    <div data-minutes-units="" class="timer__item">3</div>
+                  </div>
+                  <div class="dots">:</div>
+                  <div class="white ml7">
+                    <div data-seconds-dozens="" class="timer__item">1</div>
+                  </div>
+                  <div class="white">
+                    <div data-seconds-units="" class="timer__item">4</div>
+                  </div>
+                </div>
+                <div class="timer__names">
+                  <p class="timer__names-name hours">घडी</p>
+                  <p class="timer__names-name min">मिनेट</p>
+                  <p class="timer__names-name sec">सेकेन्ड</p>
+                </div>
+              </div>
+              <div class="form-container"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__inner">
+            <div class="footer__inner-wrap">
+              <p class="footer__inner-text">© <span class="date-0" data-format="yyyy">
+                </span> प्रतिलिपि अधिकार। सबै अधिकार सुरक्षित</p>
+            </div>
+            <nav class="footer__inner-menu">
+              <ul class="footer__menu-list">
+                <li class="footer__menu-item">
+                  <a href="#prod" class="footer__menu-link">उत्पादनको बारेमा</a>
+                </li>
+                <li class="footer__menu-item">
+                  <a href="#res" class="footer__menu-link">परिणामहरू</a>
+                </li>
+                <li class="footer__menu-item">
+                  <a href="#etap" class="footer__menu-link">रचना</a>
+                </li>
+                <li class="footer__menu-item">
+                  <a href="#rev" class="footer__menu-link">समीक्षाहरू</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <p
+            style="font-size: 10px;line-height: 1; text-align: center;color: black; margin: 10px auto 0;max-width: 600px;">
+            The contents of this website are for informational purposes only and not intended to be a substitute for
+            professional medical advice, diagnosis, or treatment. Please seek the advice of a physician or other
+            qualified health provider with any questions you may have regarding a medical condition. Do not disregard
+            professional medical advice or delay in seeking it because of something you have read on this website.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="js/libs/blazy.min.js">
+  </script>
+  <script type="text/javascript">new Blazy({
+      selector: "img",
+      loadInvisible: true,
+      container: ".swiper-wrapper",
+      offset: 300,
+    });</script>
+  <script defer="" src="../public/validation.min.js">
+  </script>
+  <script defer="" src="js/app.min.js">
+  </script>
+</body>
+
+</html>
