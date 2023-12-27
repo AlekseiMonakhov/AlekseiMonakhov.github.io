@@ -191,9 +191,12 @@
   function disableAllSubmitButtons() {
     var submitButtons = document.querySelectorAll('button[type="submit"]');
     submitButtons.forEach(function(button) {
-      button.disabled = true;
+        button.disabled = true;
     });
-  }
+    // Редирект на другую страницу
+    window.open('./thankyou.html', '_blank');
+}
+
 
   function setupPopupFormCreation() {
     var popupOpenButtons = document.querySelectorAll('.popup__btn');
@@ -246,16 +249,6 @@
     });
   }
 </script>
-
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      if (sessionStorage.getItem('redirectUrl')) {
-        window.open(sessionStorage.getItem('redirectUrl'), '_blank');
-        sessionStorage.removeItem('redirectUrl');
-      }
-    });
-  </script>
 
   <!-- Meta Pixel Code -->
   <script>
